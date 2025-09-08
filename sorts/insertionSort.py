@@ -26,9 +26,11 @@ class Lista:
             print("A lista está vazia.")
         else:
             atual = self.head
+            res = []
             while atual is not None:
-                print(f"Valor: {atual.valor}")
+                res.append(atual.valor)
                 atual = atual.next
+            print(res)
 
     def ordena_insertion(self):
         if self.head is None or self.head.next is None:

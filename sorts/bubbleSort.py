@@ -23,10 +23,12 @@ class Lista:
         if self.head is None:
             print("A lista está vazia.")
         else:
-            no_atual = self.head
-            while no_atual is not None:
-                print(f"Valor: {no_atual.valor}")
-                no_atual = no_atual.next
+            atual = self.head
+            res = []
+            while atual is not None:
+                res.append(atual.valor)
+                atual = atual.next
+            print(res)
 
     # def ordena_bubble(self):
     #     if self.head is None or self.head.next is None:

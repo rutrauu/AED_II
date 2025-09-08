@@ -25,9 +25,11 @@ class Lista:
             print("A lista está vazia.")
         else:
             atual = self.head
+            res = []
             while atual is not None:
-                print(f"Valor: {atual.valor}")
+                res.append(atual.valor)
                 atual = atual.next
+            print(res)
 
 
     def ordena_quick(self):

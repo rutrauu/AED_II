@@ -22,16 +22,13 @@ class Lista:
     def imprime_lista(self):
         if self.head is None:
             print("A lista está vazia.")
-            return
-
-        valores_da_lista = []
-        no_atual = self.head
-
-        while no_atual is not None:
-            valores_da_lista.append(no_atual.valor)
-            no_atual = no_atual.next
-
-        print(valores_da_lista)
+        else:
+            atual = self.head
+            res = []
+            while atual is not None:
+                res.append(atual.valor)
+                atual = atual.next
+            print(res)
 
 
     def ordena_selection(self):
