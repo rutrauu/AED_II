@@ -39,16 +39,16 @@ class Lista:
         atual = self.head.next
         while atual is not None:
             value = atual.valor
-            prevValue = atual.prev
+            move = atual.prev
 
-            while prevValue is not None and prevValue.valor > value:
-                prevValue.next.valor = prevValue.valor
-                prevValue = prevValue.prev
+            while move is not None and move.valor > value:
+                move.next.valor = move.valor
+                move = move.prev
 
-            if prevValue is None:
+            if move is None:
                 self.head.valor = value
             else:
-                prevValue.next.valor = value
+                move.next.valor = value
 
             atual = atual.next
 
