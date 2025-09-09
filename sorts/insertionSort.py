@@ -38,17 +38,17 @@ class Lista:
 
         atual = self.head.next
         while atual is not None:
-            chave = atual.valor
-            mover = atual.prev
+            value = atual.valor
+            prevValue = atual.prev
 
-            while mover is not None and mover.valor > chave:
-                mover.next.valor = mover.valor
-                mover = mover.prev
+            while prevValue is not None and prevValue.valor > value:
+                prevValue.next.valor = prevValue.valor
+                prevValue = prevValue.prev
 
-            if mover is None:
-                self.head.valor = chave
+            if prevValue is None:
+                self.head.valor = value
             else:
-                mover.next.valor = chave
+                prevValue.next.valor = value
 
             atual = atual.next
 

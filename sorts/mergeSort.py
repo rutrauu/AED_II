@@ -25,11 +25,9 @@ class Lista:
             print("A lista está vazia.")
         else:
             atual = self.head
-            res = []
             while atual is not None:
-                res.append(atual.valor)
+                print(f"Valor: {atual.valor}")
                 atual = atual.next
-            print(res)
 
     def ordena_merge(self):
         self.head = self._merge_sort(self.head)
