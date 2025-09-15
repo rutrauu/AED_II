@@ -1,7 +1,7 @@
 import time
 class Node:
     def __init__(self, numero):
-        self.valor = numero
+        self.value = numero
         self.next = None
         self.prev = None
 
@@ -10,8 +10,8 @@ class Lista:
         self.head = None
         self.tail = None
 
-    def add_valor(self, valor):
-        novo_no = Node(valor)
+    def add_valor(self, value):
+        novo_no = Node(value)
         if self.head is None:
             self.head = novo_no
             self.tail = novo_no
@@ -20,16 +20,16 @@ class Lista:
             novo_no.prev = self.tail
             self.tail = novo_no
 
-    def imprime_lista(self):
+    def printList(self):
         if self.head is None:
             print("A lista está vazia.")
         else:
             atual = self.head
             while atual is not None:
-                print(f"Valor: {atual.valor}")
+                print(f"Valor: {atual.value}")
                 atual = atual.next
 
-    def ordena_merge(self):
+    def mergeSort(self):
         self.head = self._merge_sort(self.head)
         # Atualiza tail após ordenação
         atual = self.head
@@ -45,13 +45,13 @@ class Lista:
         if head is None or head.next is None:
             return head
 
-        meio = self._divide(head)
-        esquerda = self._merge_sort(head)
-        direita = self._merge_sort(meio)
+        meio = self._split(head)
+        left = self._merge_sort(head)
+        right = self._merge_sort(meio)
 
-        return self._merge(esquerda, direita)
+        return self._merge(left, right)
 
-    def _divide(self, head):
+    def _split(self, head):
         lento = head
         rapido = head
 
@@ -65,20 +65,20 @@ class Lista:
             meio.prev = None
         return meio
 
-    def _merge(self, esquerda, direita):
-        if esquerda is None:
-            return direita
-        if direita is None:
-            return esquerda
+    def _merge(self, left, right):
+        if left is None:
+            return right
+        if right is None:
+            return left
 
-        if esquerda.valor <= direita.valor:
-            resultado = esquerda
-            resultado.next = self._merge(esquerda.next, direita)
+        if left.value <= right.value:
+            resultado = left
+            resultado.next = self._merge(left.next, right)
             if resultado.next:
                 resultado.next.prev = resultado
         else:
-            resultado = direita
-            resultado.next = self._merge(esquerda, direita.next)
+            resultado = right
+            resultado.next = self._merge(left, right.next)
             if resultado.next:
                 resultado.next.prev = resultado
 
@@ -92,13 +92,13 @@ for numero in lista_desordenada:
     lista.add_valor(numero)
 
 print("Lista Desordenada:")
-lista.imprime_lista()
+lista.printList()
 
 # inicio = time.time()
-lista.ordena_merge()
+lista.mergeSort()
 # fim = time.time()
 print("Lista Ordenada com Insertion Sort:")
-lista.imprime_lista()
+lista.printList()
 
 # print(f"Tempo de execução: {fim - inicio:.6f} segundos")
 
