@@ -177,7 +177,7 @@ def exportar_para_csv(resultados: List[ResultadoSorteio], nome_arquivo: str):
         # encoding='utf-8' garante a compatibilidade com caracteres especiais
         with open(nome_arquivo, mode='w', newline='', encoding='utf-8') as arquivo_csv:
             # Cria um "escritor" de CSV
-            escritor_csv = csv.writer(arquivo_csv)
+            escritor_csv = csv.writer(arquivo_csv, delimiter=';')
 
             # Escreve a primeira linha, que é o cabeçalho
             escritor_csv.writerow(cabecalho)
